@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 import ShopContext from '../context/shop-context';
 import MainNavigation from '../components/MainNavigation';
-// import { addProductToCart } from '../store/actions';
 import './Products.css';
 class ProductsPage extends Component {
   render() {
@@ -39,25 +37,5 @@ class ProductsPage extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     products: state.products,
-//     cartItemCount: state.cart.reduce((count, curItem) => {
-//       return count + curItem.quantity;
-//     }, 0)
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addProductToCart: product => dispatch(addProductToCart(product))
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(ProductsPage);
 
 export default ProductsPage;
