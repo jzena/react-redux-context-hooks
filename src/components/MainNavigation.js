@@ -13,6 +13,9 @@ const mainNavigation = props => (
         <li>
           <NavLink to="/cart">Cart ({props.cartItemNumber})</NavLink>
         </li>
+        <li>
+          <NavLink to="/visualizer">visualizer</NavLink>
+        </li>
       </ul>
     </nav>
   </header>
