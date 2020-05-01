@@ -1,13 +1,50 @@
-import React from 'react';
+import React, { createContext, useReducer } from 'react';
+import { shopReducer, shopInitialState } from './reducers/shopReducer';
+import { authReducer, authInitialState } from './reducers/authReducer';
+import { counterReducer } from './reducers';
+import logger from 'use-reducer-logger';
 
-export default React.createContext({
-  products: [
-    { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
-    { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
-    { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
-    { id: 'p4', title: 'Half-dried plant', price: 2.99 }
-  ],
-  cart: [],
-  addProductToCart: product => {},
-  removeProductFromCart: productId => {}
+const initialState = {
+  shop: shopInitialState,
+  auth: authInitialState,
+  counter: 0
+};
+
+const combineReducers = (slices) => (state, action) =>
+  Object.keys(slices).reduce( // use for..in loop, if you prefer it
+    (acc, prop) => ({
+      ...acc,
+      [prop]: slices[prop](acc[prop], action),
+    }),
+    state
+  );
+
+
+const allReducer = combineReducers({
+  shop: shopReducer,
+  auth: authReducer,
+  counter: counterReducer
 });
+
+// const allReducer = ({shop, auth, counter}, action) => ({
+//   shop: shopReducer(shop, action),
+//   auth: authReducer(auth, action),
+//   counter: counterReducer(counter, action)
+// });
+
+const rootReducer = (process.env.NODE_ENV === 'production' ? allReducer : logger(allReducer));
+
+const AppContext = createContext({
+  state: initialState,
+  dispatch: () => null
+});
+
+const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(rootReducer, initialState);
+  return (
+    <AppContext.Provider value={ { state, dispatch } }>
+      { children }
+    </AppContext.Provider>
+  )
+}
+export { AppContext, AppProvider };

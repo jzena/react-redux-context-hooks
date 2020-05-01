@@ -1,40 +1,57 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import ShopContext from '../context/shop-context';
+import { AppContext } from '../context/shop-context';
 import MainNavigation from '../components/MainNavigation';
 import './Products.css';
 
 const ProductsPage = props => {
+  console.log('ProductsPage');
+  const { state, dispatch } = useContext(AppContext);
+  console.log(state)
+  const { shop } = state;
   return (
-    <ShopContext.Consumer>
-      {context => (
-        <React.Fragment>
-          <MainNavigation
-            cartItemNumber={context.cart.reduce((count, curItem) => {
-              return count + curItem.quantity;
-            }, 0)}
-          />
-          <main className="products">
-            <ul>
-              {context.products.map(product => (
-                <li key={product.id}>
-                  <div>
-                    <strong>{product.title}</strong> - ${product.price}
-                  </div>
-                  <div>
-                    <button
-                      onClick={context.addProductToCart.bind(this, product)}
-                    >
-                      Add to Cart
+    <React.Fragment>
+      <MainNavigation
+        cartItemNumber={ (shop.cart || []).reduce((count, curItem) => {
+          return count + curItem.quantity;
+        }, 0) }
+      />
+      <main className="products">
+        <ul>
+          { shop.products.map(product => (
+            <li key={ product.id }>
+              <div>
+                <strong>{ product.title }</strong> - ${ product.price }
+              </div>
+              <div>
+                <button
+                  onClick={ () => dispatch({
+                    type: 'ADD_PRODUCT',
+                    product
+                  })
+                  }
+                >
+                  Add to Cart
                     </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </main>
-        </React.Fragment>
-      )}
-    </ShopContext.Consumer>
+              </div>
+            </li>
+          )) }
+        </ul>
+        <div>
+          <button
+            onClick={ () => {
+              dispatch({
+                type: 'ADD_COUNTER'
+              });
+            } }
+          >
+            click
+      </button>
+          { state.counter }
+        </div>
+      </main>
+    </React.Fragment>
+
   );
 };
 

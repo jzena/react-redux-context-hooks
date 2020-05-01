@@ -1,22 +1,19 @@
 
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import GlobalState from './context/GlobalState';
-import ProductsPage from './pages/Products';
-import CartPage from './pages/Cart';
+import { AppProvider } from './context/shop-context';
+import Router from "./router";
 import './App.css';
 
+const repo = `/${ window.location.pathname.split('/')[1] }`;
 const App = props => {
   return (
-    <GlobalState>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={ ProductsPage } exact />
-          <Route path="/cart" component={ CartPage } exact />
-        </Switch>
+    <AppProvider>
+      <BrowserRouter basename={ repo }>
+        <Router />
       </BrowserRouter>
-    </GlobalState>
+    </AppProvider>
   );
 };
 
