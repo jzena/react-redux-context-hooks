@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-redux-context-hooks/static/css/main.5fdc6bc9.chunk.css",
-    "main.js": "/react-redux-context-hooks/static/js/main.4dda4ef4.chunk.js",
-    "main.js.map": "/react-redux-context-hooks/static/js/main.4dda4ef4.chunk.js.map",
-    "runtime-main.js": "/react-redux-context-hooks/static/js/runtime-main.96870652.js",
-    "runtime-main.js.map": "/react-redux-context-hooks/static/js/runtime-main.96870652.js.map",
-    "static/js/2.3dc83a32.chunk.js": "/react-redux-context-hooks/static/js/2.3dc83a32.chunk.js",
-    "static/js/2.3dc83a32.chunk.js.map": "/react-redux-context-hooks/static/js/2.3dc83a32.chunk.js.map",
+    "main.css": "/react-redux-context-hooks/static/css/main.d0ebeafa.chunk.css",
+    "main.js": "/react-redux-context-hooks/static/js/main.386c3c88.chunk.js",
+    "main.js.map": "/react-redux-context-hooks/static/js/main.386c3c88.chunk.js.map",
+    "runtime-main.js": "/react-redux-context-hooks/static/js/runtime-main.cf22ade4.js",
+    "runtime-main.js.map": "/react-redux-context-hooks/static/js/runtime-main.cf22ade4.js.map",
+    "static/js/2.b41ab857.chunk.js": "/react-redux-context-hooks/static/js/2.b41ab857.chunk.js",
+    "static/js/2.b41ab857.chunk.js.map": "/react-redux-context-hooks/static/js/2.b41ab857.chunk.js.map",
     "index.html": "/react-redux-context-hooks/index.html",
-    "precache-manifest.9b7e0ddbb729d0ae133095c447426702.js": "/react-redux-context-hooks/precache-manifest.9b7e0ddbb729d0ae133095c447426702.js",
+    "precache-manifest.213ccf0b37cf57d599d7e22d4d354962.js": "/react-redux-context-hooks/precache-manifest.213ccf0b37cf57d599d7e22d4d354962.js",
     "service-worker.js": "/react-redux-context-hooks/service-worker.js",
-    "static/css/main.5fdc6bc9.chunk.css.map": "/react-redux-context-hooks/static/css/main.5fdc6bc9.chunk.css.map",
-    "static/js/2.3dc83a32.chunk.js.LICENSE.txt": "/react-redux-context-hooks/static/js/2.3dc83a32.chunk.js.LICENSE.txt"
+    "static/css/main.d0ebeafa.chunk.css.map": "/react-redux-context-hooks/static/css/main.d0ebeafa.chunk.css.map",
+    "static/js/2.b41ab857.chunk.js.LICENSE.txt": "/react-redux-context-hooks/static/js/2.b41ab857.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.96870652.js",
-    "static/js/2.3dc83a32.chunk.js",
-    "static/css/main.5fdc6bc9.chunk.css",
-    "static/js/main.4dda4ef4.chunk.js"
+    "static/js/runtime-main.cf22ade4.js",
+    "static/js/2.b41ab857.chunk.js",
+    "static/css/main.d0ebeafa.chunk.css",
+    "static/js/main.386c3c88.chunk.js"
   ]
 }
