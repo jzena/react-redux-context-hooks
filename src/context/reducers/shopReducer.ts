@@ -1,8 +1,8 @@
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
-export const FILTER_PRODUCT = 'FILTER_PRODUCT';
+import { IProduct, IShop, ShopAction } from './../types';
+import { ShopType } from './../enum';
 
-export const shopInitialState = {
+
+export const initialState: IShop = {
   products: [
     { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
     { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
@@ -12,8 +12,8 @@ export const shopInitialState = {
   cart: [],
 }
 
-const addProductToCart = (product, state) => {
-  const updatedCart = [...state.cart];
+const addProductToCart = (product: IProduct, state: IShop) => {
+  const updatedCart = [ ...state.cart ];
   const updatedItemIndex = updatedCart.findIndex(
     item => item.id === product.id
   );
@@ -22,39 +22,44 @@ const addProductToCart = (product, state) => {
     updatedCart.push({ ...product, quantity: 1 });
   } else {
     const updatedItem = {
-      ...updatedCart[updatedItemIndex]
+      ...updatedCart[ updatedItemIndex ]
     };
     updatedItem.quantity++;
-    updatedCart[updatedItemIndex] = updatedItem;
+    updatedCart[ updatedItemIndex ] = updatedItem;
   }
 
   return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = (productId, state) => {
+const removeProductFromCart = (productId: string, state: IShop) => {
   console.log('Removing product with id: ' + productId);
-  const updatedCart = [...state.cart];
+  const updatedCart = [ ...state.cart ];
   const updatedItemIndex = updatedCart.findIndex(item => item.id === productId);
 
   const updatedItem = {
-    ...updatedCart[updatedItemIndex]
+    ...updatedCart[ updatedItemIndex ]
   };
   updatedItem.quantity--;
   if (updatedItem.quantity <= 0) {
     updatedCart.splice(updatedItemIndex, 1);
   } else {
-    updatedCart[updatedItemIndex] = updatedItem;
+    updatedCart[ updatedItemIndex ] = updatedItem;
   }
   return { ...state, cart: updatedCart };
 };
 
-export const shopReducer = (state, action) => {
+const reducer = (state: IShop, action: ShopAction) => {
   switch (action.type) {
-    case ADD_PRODUCT:
-      return addProductToCart(action.product, state);
-    case REMOVE_PRODUCT:
-      return removeProductFromCart(action.productId, state);
+    case ShopType.ADD_PRODUCT:
+      return addProductToCart(action.payload.product, state);
+    case ShopType.REMOVE_PRODUCT:
+      return removeProductFromCart(action.payload.productId, state);
     default:
       return state;
   }
 };
+
+export default {
+  initialState,
+  reducer
+}
